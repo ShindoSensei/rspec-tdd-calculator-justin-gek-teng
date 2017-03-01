@@ -64,6 +64,40 @@ describe Calculator do
         @calculator.divide(2)
         expect(@calculator.result).to eq(1)
       end
+
+# Chain: my_calculator.add(x).subtract(y) all methods should be chainable in any order
+      it 'should allow chaining of methods' do
+        @calculator.multiply(2).divide(2).add(2).subtract(1)
+        expect(@calculator.result).to eq(2)
+      end
+
+      # Operation: my_calculator.operation('add', x) would apply the addition operation with the value of x. It should support all operations
+      it 'should support all operations and apply them appropriately' do
+        @calculator.operation('add',2)
+        @calculator.operation('subtract',1)
+        @calculator.operation('multiply',2)
+        @calculator.operation('divide',2)
+        expect(@calculator.result).to eq(3)  #AT THIS POINT IT IS 3
+      end
+
+# Undo: my_calculator.undo should undo the previous operation, restoring the result value.
+      it 'should undo the previous operation, restoring the result value' do
+        @calculator.operation('subtract',1)
+        expect(@calculator.undo).to eq(3) #WE ARE AT 3
+      end
+
+      it 'should redo the previous operation, restoring the result value' do
+        @calculator.redo
+        expect(@calculator.result).to eq(2) #WE ARE AT 2
+        # If a new action is executed it should remove the ability to perform redos.
+      end
+
+      it 'should remove ability to perform redos after new action is executed' do
+        @calculator.add(2)
+        @calculator.redo
+        expect(@calculator.result).to eq(4)
+      end
+
     end
 
 end
