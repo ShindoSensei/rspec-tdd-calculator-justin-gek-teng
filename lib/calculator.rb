@@ -18,4 +18,10 @@ attr_reader :result
     raise TypeError unless x.is_a? Numeric
     @result += x
   end
+
+  def subtract(x)
+    raise TypeError unless x.is_a? Numeric
+    @result -=x
+  end
+
 end

@@ -34,9 +34,13 @@ describe Calculator do
         expect(@calculator.result).to eq(0)
       end
       # Addition: my_calculator.add(x) would add x to the internal result value, if x can be a valid number
+
       it 'Input should be a valid num' do
         #If x is a valid number, perform below
         expect{@calculator.add('abc')}.to raise_error(TypeError)
+        expect{@calculator.subtract('abc')}.to raise_error(TypeError)
+        expect{@calculator.multiply('abc')}.to raise_error(TypeError)
+        expect{@calculator.divide('abc')}.to raise_error(TypeError)
       end
 
       it 'should add x to internal result value' do
@@ -44,13 +48,20 @@ describe Calculator do
         expect(@calculator.result).to eq(2)
       end
 
-      it 'Input should be a valid num' do
-        #If x is a valid number, perform below
-        expect{@calculator.subtract('abc')}.to raise_error(TypeError)
-      end
 
       it 'should add x to internal result value' do
         @calculator.subtract(1)
+        expect(@calculator.result).to eq(1)
+      end
+
+# Multiply: my_calculator.multiply(x) would multiply x by the internal result value and save the new value, if x can be a valid number
+      it 'should multiply x to internal result value' do
+        @calculator.multiply(2)
+        expect(@calculator.result).to eq(2)
+      end
+
+      it 'should divide internal result value by x' do
+        @calculator.divide(2)
         expect(@calculator.result).to eq(1)
       end
     end
