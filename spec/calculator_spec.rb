@@ -13,9 +13,14 @@ describe Calculator do
   end
 
 # Results: my_calculator.result would return the current result - it should be readonly.
-    describe '.result' do
+    describe 'Methods' do
       it 'should return current result' do
         expect(@calculator.result).to eq(1)
+      end
+
+      it 'should reset calculator to input value' do
+        @calculator.reset(0)
+        expect(@calculator.result).to eq(0)
       end
     end
 
