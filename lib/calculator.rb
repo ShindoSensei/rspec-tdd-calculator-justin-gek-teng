@@ -1,7 +1,13 @@
 class Calculator
   # your class goes here
-  def initialize(num)
-    @num = num
+attr_reader :result
+
+  def initialize(result)
+    @result = result
+  end
+
+  def result
+    @result
   end
 
 end
