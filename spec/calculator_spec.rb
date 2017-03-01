@@ -36,12 +36,22 @@ describe Calculator do
       # Addition: my_calculator.add(x) would add x to the internal result value, if x can be a valid number
       it 'Input should be a valid num' do
         #If x is a valid number, perform below
-        expect(@calculator.add('2')).to raise_error(TypeError)
+        expect{@calculator.add('abc')}.to raise_error(TypeError)
       end
 
       it 'should add x to internal result value' do
         @calculator.add(2)
         expect(@calculator.result).to eq(2)
+      end
+
+      it 'Input should be a valid num' do
+        #If x is a valid number, perform below
+        expect{@calculator.subtract('abc')}.to raise_error(TypeError)
+      end
+
+      it 'should add x to internal result value' do
+        @calculator.subtract(1)
+        expect(@calculator.result).to eq(1)
       end
     end
 

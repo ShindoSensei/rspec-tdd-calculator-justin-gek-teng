@@ -13,4 +13,9 @@ attr_reader :result
   def reset(x)
       @result = x
   end
+
+  def add(x)
+    raise TypeError unless x.is_a? Numeric
+    @result += x
+  end
 end
