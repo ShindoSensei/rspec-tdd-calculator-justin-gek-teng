@@ -10,4 +10,7 @@ attr_reader :result
     @result
   end
 
+  def reset(x)
+      @result = x
+  end
 end
